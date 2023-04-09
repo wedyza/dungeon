@@ -39,4 +39,10 @@ public class DungeonTask
 
 		return listsTuple.Item1.Zip(listsTuple.Item1.Skip(1), Move).ToArray();
 	}
+
+    private static MoveDirection Move(Point start, Point finish)
+    {
+        var d = new Point(finish.X - start.X, finish.Y - start.Y);
+        return d.X == 1 ? MoveDirection.Right : d.X == 0 ? d.Y == 1 ? MoveDirection.Down : MoveDirection.Up : MoveDirection.Left;
+    }
 }
